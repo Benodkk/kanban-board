@@ -1,6 +1,6 @@
 # Kanban-board
 
-Project available on: https://benodkk.github.io/kanban/
+Project available on: https://benodkk.github.io/kanban-board/
 
 ## Run project locally
 
