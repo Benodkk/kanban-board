@@ -64,6 +64,7 @@ const AddTask = () => {
         });
       }
     });
+
     taskInfo.push({
       label: "Description",
       value: textareaValue,
@@ -72,7 +73,6 @@ const AddTask = () => {
 
     if (errors.length === 0 && taskState) {
       dispatch(addToList(id, taskState, taskInfo));
-      console.log(inputs);
       setInputs(
         inputs.map((input) => {
           return { ...input, value: "" };

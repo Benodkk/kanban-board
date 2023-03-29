@@ -1,11 +1,18 @@
-import AddTask from "./components/AddTask/AddTask";
+import React from "react";
 
-function App() {
+import AddTask from "./components/AddTask/AddTask";
+import Kanban from "./components/Kanban/Kanban";
+
+import { StyledApp } from "./App.styled";
+
+const App = () => {
   return (
-    <div>
-      <AddTask></AddTask>
-    </div>
+    <StyledApp>
+      <h1>Task schedule</h1>
+      <AddTask />
+      <Kanban />
+    </StyledApp>
   );
-}
+};
 
 export default App;

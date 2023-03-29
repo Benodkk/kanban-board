@@ -1,11 +1,11 @@
 import { ActionType } from "./action-types";
-import { TaskState, TaskInfo } from "../interfaces";
+import { IsTaskState, IsTaskInfo } from "../interfaces";
 
 interface addToListAction {
   type: ActionType.addToList;
   id: string;
-  taskState: TaskState;
-  taskInfo: TaskInfo[];
+  taskState: IsTaskState;
+  taskInfo: IsTaskInfo[];
 }
 
 interface nextStateAction {
