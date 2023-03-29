@@ -3,6 +3,8 @@ import { columns } from "../database/columns";
 import { ActionType } from "./action-types";
 import { Action } from "./actions";
 
+import { IsTaskInfo, IsTaskState } from "../interfaces";
+
 const STORAGE_KEY = "my_app_state";
 
 const savedState = localStorage.getItem(STORAGE_KEY);
@@ -12,35 +14,7 @@ const initialState = savedState
       tasks: [],
     };
 
-function addToList(
-  id: string,
-  taskState: {
-    id: number;
-    name: string;
-  },
-  taskInfo: [
-    {
-      label: string;
-      value: string;
-      important: boolean;
-    },
-    {
-      label: string;
-      value: string;
-      important: boolean;
-    },
-    {
-      label: string;
-      value: string;
-      important: boolean;
-    },
-    {
-      label: string;
-      value: string;
-      important: boolean;
-    }
-  ]
-) {
+function addToList(id: string, taskState: IsTaskState, taskInfo: IsTaskInfo[]) {
   return {
     type: ActionType.addToList,
     id: id,
@@ -88,32 +62,8 @@ function reducer(state = initialState, action: Action) {
         tasks: state.tasks.map(
           (task: {
             id: string;
-            taskState: {
-              id: number;
-              name: string;
-            };
-            taskInfo: [
-              {
-                label: string;
-                value: string;
-                important: boolean;
-              },
-              {
-                label: string;
-                value: string;
-                important: boolean;
-              },
-              {
-                label: string;
-                value: string;
-                important: boolean;
-              },
-              {
-                label: string;
-                value: string;
-                important: boolean;
-              }
-            ];
+            taskState: IsTaskState;
+            taskInfo: IsTaskInfo[];
           }) =>
             task.id === action.id && task.taskState.id < columns.length
               ? {
@@ -138,32 +88,8 @@ function reducer(state = initialState, action: Action) {
         tasks: state.tasks.filter(
           (task: {
             id: string;
-            taskState: {
-              id: number;
-              name: string;
-            };
-            taskInfo: [
-              {
-                label: string;
-                value: string;
-                important: boolean;
-              },
-              {
-                label: string;
-                value: string;
-                important: boolean;
-              },
-              {
-                label: string;
-                value: string;
-                important: boolean;
-              },
-              {
-                label: string;
-                value: string;
-                important: boolean;
-              }
-            ];
+            taskState: IsTaskState;
+            taskInfo: IsTaskInfo[];
           }) => task.id !== action.id
         ),
       };
@@ -174,6 +100,8 @@ function reducer(state = initialState, action: Action) {
       return state;
   }
 }
+
+export type RootState = ReturnType<typeof reducer>;
 
 const store = createStore(reducer);
 

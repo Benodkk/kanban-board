@@ -1,34 +1,11 @@
 import { ActionType } from "./action-types";
+import { TaskState, TaskInfo } from "../interfaces";
 
 interface addToListAction {
   type: ActionType.addToList;
   id: string;
-  taskState: {
-    id: number;
-    name: string;
-  };
-  taskInfo: [
-    {
-      label: string;
-      value: string;
-      important: boolean;
-    },
-    {
-      label: string;
-      value: string;
-      important: boolean;
-    },
-    {
-      label: string;
-      value: string;
-      important: boolean;
-    },
-    {
-      label: string;
-      value: string;
-      important: boolean;
-    }
-  ];
+  taskState: TaskState;
+  taskInfo: TaskInfo[];
 }
 
 interface nextStateAction {
