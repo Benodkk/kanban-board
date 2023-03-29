@@ -53,7 +53,7 @@ const AddTask = () => {
     );
     const taskInfo: IsTaskInfo[] = [];
 
-    inputs.map((input) => {
+    inputs.forEach((input) => {
       if (input.value.length === 0) {
         errors.push(input.error);
       } else {
